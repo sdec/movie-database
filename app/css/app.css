@@ -8,12 +8,20 @@ html * {
     font-family: 'Raleway', sans-serif;
 }
 
+.menu-lang {
+    margin-top: .5em;
+}
+
 .img-responsive {
     width: 100%;
 }
 
-.menu-lang {
-    margin-top: .5em;
+.poster img {
+    max-height: 100%;
+}
+
+.poster {
+    text-align: center;
 }
 
 .movie .label {
