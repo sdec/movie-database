@@ -1,0 +1,8 @@
+/dist/*
+/bower/*
+/app/bower_components/*
+/node_modules/*
+/.idea/*
+/.sass-cache/*
+**/style/*.css.map
+app/bower_components/

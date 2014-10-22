@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="moviesApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{ 'title' | translate }}</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body ng-cloak>
+
+<div class="container">
+
+    <nav class="navbar navbar-default" role="navigation" ng-controller="MenuCtrl">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">{{ 'toggleNav' | translate }}</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">{{ 'title' | translate }}</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#/movies">{{ 'movies' | translate }}</a></li>
+                </ul>
+                <div class="pull-right">
+                    <p class="menu-lang">
+                        Language:
+                        <button ng-click="setLang('nl')" ng-class="{'active': lang == 'nl'}" class="btn btn-default">
+                            NL
+                        </button>
+                        <button ng-click="setLang('en')" ng-class="{'active': lang == 'en'}" class="btn btn-default">
+                            EN
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div ui-view></div>
+    <footer class="text-center text-muted">
+        <hr/>
+        <p>
+            <small>&copy; Sander Decoster</small>
+        </p>
+    </footer>
+</div>
+
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-translate/angular-translate.min.js"></script>
+
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/controller.js"></script>
+<script type="text/javascript" src="js/services.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="js/routes.js"></script>
+<script type="text/javascript" src="js/filters.js"></script>
+<script type="text/javascript" src="js/directives.js"></script>
+<script type="text/javascript" src="js/interceptors.js"></script>
+<script type="text/javascript" src="js/translate.js"></script>
+</body>
+</html>

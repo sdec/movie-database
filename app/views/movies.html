@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-8">
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" type="text" ng-model="search" ng-keyup="searchMovies()"
+                       placeholder="{{ 'searchMovies' | translate }} ...">
+                <div class="input-group-addon">{{ (movies && movies.length) || 0 }} {{ 'matches' | translate }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-hide="loading || (movies && movies.length > 0)" class="text-center text-muted">
+    <h1 class="jumbotron">
+        <i class="glyphicon glyphicon-film"></i><br/>
+        {{ 'typeSearchMovies' | translate }}
+    </h1>
+</div>
+
+<div ng-show="loading" class="text-center text-muted has-spinner">
+    <h1 class="jumbotron">
+        <i class="glyphicon glyphicon-time"></i><br/>
+        {{ 'loading' | translate }}
+    </h1>
+</div>
+
+<div ng-show="movies && movies.length > 0">
+    <div class="panel panel-default repeated-item" ng-repeat="movie in movies" ng-animate="animate">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-4">
+                    <a class="btn btn-info btn-block"
+                       href="#/movies/{{ movie.imdbID }}/{{ movie.Title | slug }}?search={{ search }}">
+                        <h1 class="text-center"><i class="glyphicon glyphicon-film"></i><br/>{{ 'view' | translate }}</h1>
+                    </a>
+                </div>
+                <div class="col-xs-8">
+                    <h4>{{ movie.Title }} ({{ movie.Year }})</h4>
+
+                    <p>
+                        <i class="glyphicon glyphicon-link"></i> <a
+                            ng-href="http://www.imdb.com/title/{{ movie.imdbID }}">http://www.imdb.com/title/{{
+                        movie.imdbID }}</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

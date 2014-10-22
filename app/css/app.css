@@ -1,0 +1,17 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+html * {
+    font-family: 'Raleway', sans-serif;
+}
+
+.img-responsive {
+    width: 100%;
+}
+
+.menu-lang {
+    margin-top: .5em;
+}
