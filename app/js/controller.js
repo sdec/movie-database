@@ -11,12 +11,21 @@
         .controller('MoviesDetailCtrl', ['$scope', 'MoviesService', '$stateParams', MoviesDetailCtrl]);
 
     function MenuCtrl($scope, $translate, GLOBALS) {
-        $scope.lang = $translate.use();
 
-        $scope.setLang = function(language) {
+        $scope.lang = $translate.use() || GLOBALS.langFallback;
+        // Fix not available yet: http://stackoverflow.com/questions/23659748/how-to-list-all-languages-that-are-loaded-by-angular-translate
+        $scope.langs = GLOBALS.langs;
+
+        $scope.setLang = function (language) {
+
+            if($scope.langs.indexOf(language) == -1) {
+                language = GLOBALS.langs[0];
+            }
+
             $translate.use(language);
-            $scope.lang = $translate.use() || GLOBALS.langFallback;
+            $scope.lang = $translate.use();
             localStorage.setItem(GLOBALS.langKey, $translate.use());
+
         };
     }
 
@@ -45,14 +54,6 @@
             $scope.search = $stateParams.search;
             $scope.searchMovies();
         }
-
-        $scope.$on('loading-start', function () {
-            $scope.loading = true;
-        });
-
-        $scope.$on('loading-stop', function () {
-            $scope.loading = false;
-        });
     }
 
     function MoviesDetailCtrl($scope, MoviesService, $stateParams) {
@@ -61,22 +62,22 @@
             .then(function (movie) {
                 $scope.movie = movie.data;
                 $scope.search = $stateParams.search;
-                return MoviesService.getVideoList(movie.data.Title);
+
+                return MoviesService.getVideoList($scope.movie.Title);
             })
             .then(function (response) {
                 var videos = JSON.parse(angular.toJson(response)).data.responseData.results;
                 if (videos.length > 0) {
                     $scope.youtubes = videos;
                 }
+                return MoviesService.getImageList($scope.movie.Title);
+            })
+            .then(function (response) {
+                var images = JSON.parse(angular.toJson(response)).data.responseData.results;
+                if (images.length > 0) {
+                    $scope.images = images;
+                }
             });
-
-        $scope.$on('loading-start', function () {
-            $scope.loading = true;
-        });
-
-        $scope.$on('loading-stop', function () {
-            $scope.loading = false;
-        });
     }
 
 })(angular.module('moviesApp'));

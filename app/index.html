@@ -31,12 +31,12 @@
                 <div class="pull-right">
                     <p class="menu-lang">
                         Language:
-                        <button ng-click="setLang('nl')" ng-class="{'active': lang == 'nl'}" class="btn btn-default">
-                            NL
-                        </button>
-                        <button ng-click="setLang('en')" ng-class="{'active': lang == 'en'}" class="btn btn-default">
-                            EN
-                        </button>
+
+                        <span ng-repeat="l in langs">
+                            <button ng-click="setLang(l)" ng-class="{'active': lang == l}" class="btn btn-default">
+                                {{ l | uppercase }}
+                            </button>
+                        </span>
                     </p>
                 </div>
             </div>
@@ -52,12 +52,16 @@
     </footer>
 </div>
 
+<!-- Other -->
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- AngularJS -->
 <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
 <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script type="text/javascript" src="bower_components/angular-translate/angular-translate.min.js"></script>
 
+<!-- Custom -->
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/controller.js"></script>
 <script type="text/javascript" src="js/services.js"></script>

@@ -19,6 +19,10 @@
             return $http.jsonp(GLOBALS.ytListUrl + query);
         };
 
+        this.getImageList = function(query) {
+            return $http.jsonp(GLOBALS.imgListUrl + query);
+        };
+
     }]);
 
 })(angular.module('moviesApp'));

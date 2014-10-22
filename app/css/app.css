@@ -15,3 +15,28 @@ html * {
 .menu-lang {
     margin-top: .5em;
 }
+
+.movie .label {
+    background-color: #5cb85c;
+}
+
+.episode .label {
+    background-color: #eea236;
+}
+
+.series .label {
+    background-color: #5bc0de;
+}
+
+.movie-block:hover {
+    cursor: pointer;
+    background-color: #F0F0F0;
+}
+
+.movie-block .glyphicon-film {
+    font-size: 1.5em;
+}
+
+.movie-block h4 {
+    font-weight: bold;
+}
